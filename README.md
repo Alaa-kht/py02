@@ -95,6 +95,3 @@ python3 ex5/ft_garden_management.py
 - Python 3.x
 - No external libraries required
 
-## Author
-
-Data Engineering for Smart Agriculture - Garden Guardian Project
