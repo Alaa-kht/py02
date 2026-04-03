@@ -1,97 +1,90 @@
-# py02
-# Garden Guardian - Error Handling in Python
+# py02 - Garden Guardian: Data Engineering for Smart Agriculture
 
 ## Project Overview
 
-Garden Guardian is a Python project focused on learning and demonstrating error handling techniques through a garden-themed programming context. The project covers built-in exceptions, custom exceptions, the `finally` block, the `raise` keyword, and a full integration exercise combining all concepts.
+Garden Guardian is a Python project focused on learning and demonstrating
+error handling techniques through a garden-themed programming context.
+The project covers built-in exceptions, raising exceptions, custom
+exceptions, and the `finally` block.
 
 ## Project Structure
-
-```
 py02/
+├── ex0/
+│   └── ft_first_exception.py
 ├── ex1/
-│   └── ft_different_errors.py
+│   └── ft_raise_exception.py
 ├── ex2/
-│   └── ft_custom_errors.py
+│   └── ft_different_errors.py
 ├── ex3/
-│   └── ft_finally_block.py
+│   └── ft_custom_errors.py
 ├── ex4/
-│   └── ft_raise_errors.py
-├── ex5/
-│   └── ft_garden_management.py
+│   └── ft_finally_block.py
 └── README.md
-```
 
 ## Exercises
 
-### Exercise 1 - Different Error Types (`ft_different_errors.py`)
+### Exercise 0 - Agricultural Data Validation (`ft_first_exception.py`)
 
-Demonstrates how to handle Python's built-in exception types:
+Introduces basic exception handling with `try/except`:
 
-- **ValueError** - Handling invalid data conversion (e.g., converting `"abc"` to an integer)
-- **ZeroDivisionError** - Handling division by zero
-- **FileNotFoundError** - Handling attempts to open non-existent files
-- **KeyError** - Handling missing dictionary keys
-- Catching multiple error types with a single `except` block
+- `input_temperature(temp_str)` converts a string to an integer temperature
+- `test_temperature()` tests valid and invalid inputs
+- Demonstrates that the program keeps running after catching an error
 
-### Exercise 2 - Custom Errors (`ft_custom_errors.py`)
+### Exercise 1 - Validation Pipeline (`ft_raise_exception.py`)
 
-Introduces custom exception classes using inheritance:
+Extends Exercise 0 with the `raise` keyword:
 
-- **GardenError** - Base exception class for all garden-related problems
-- **PlantError** - Specific exception for plant issues (inherits from `GardenError`)
-- **WaterError** - Specific exception for watering issues (inherits from `GardenError`)
-- Demonstrates that catching a parent exception also catches its child exceptions
+- Validates temperature is within plant-safe range (0 to 40°C)
+- Raises `ValueError` with a descriptive message for out-of-range values
+- Tests extreme values like `"100"` and `"-50"`
 
-### Exercise 3 - The Finally Block (`ft_finally_block.py`)
+### Exercise 2 - Different Error Types (`ft_different_errors.py`)
 
-Shows how `finally` ensures cleanup code always runs:
+Demonstrates handling of Python's built-in exception types:
 
-- Simulates opening and closing a watering system
-- Demonstrates cleanup execution on successful operations
-- Demonstrates cleanup execution even when errors occur
-- Uses the `try/except/finally` structure
+- **ValueError** - Invalid data conversion (e.g., `int("abc")`)
+- **ZeroDivisionError** - Division by zero
+- **FileNotFoundError** - Opening a non-existent file
+- **TypeError** - Mixing incompatible types
+- Catching multiple error types with a single `try` block
 
-### Exercise 4 - Raising Errors (`ft_raise_errors.py`)
+### Exercise 3 - Custom Errors (`ft_custom_errors.py`)
 
-Demonstrates how to raise exceptions with the `raise` keyword:
+Creates custom exception classes using inheritance:
 
-- Validates plant names (must not be empty)
-- Validates water levels (must be between 1 and 10)
-- Validates sunlight hours (must be between 2 and 12)
-- Provides helpful, descriptive error messages
+- **GardenError** - Base exception for all garden problems
+- **PlantError** - Specific exception for plant issues
+- **WaterError** - Specific exception for watering issues
+- Demonstrates that catching a parent exception catches all child exceptions
 
-### Exercise 5 - Garden Management System (`ft_garden_management.py`)
+### Exercise 4 - Finally Block (`ft_finally_block.py`)
 
-A comprehensive integration exercise combining all techniques:
+Shows how `finally` ensures cleanup always runs:
 
-- Implements a `GardenManager` class with methods for adding plants, watering, and health checks
-- Uses custom exceptions (`GardenError`, `PlantError`, `WaterError`)
-- Applies `try/except/finally` blocks for resource management
-- Raises errors for invalid input with descriptive messages
-- Demonstrates error recovery and system resilience
+- `water_plant(plant_name)` succeeds only if the name is capitalized
+- `test_watering_system()` opens/closes the watering system using `finally`
+- Cleanup always happens whether or not an error occurred
 
 ## How to Run
-
 ```bash
-python3 ex1/ft_different_errors.py
-python3 ex2/ft_custom_errors.py
-python3 ex3/ft_finally_block.py
-python3 ex4/ft_raise_errors.py
-python3 ex5/ft_garden_management.py
+python ex0/ft_first_exception.py
+python ex1/ft_raise_exception.py
+python ex2/ft_different_errors.py
+python ex3/ft_custom_errors.py
+python ex4/ft_finally_block.py
 ```
 
 ## Key Concepts Learned
 
 - **try/except** - Catching and handling exceptions gracefully
+- **raise** - Throwing exceptions when invalid data is detected
 - **try/except/finally** - Ensuring cleanup code always executes
-- **raise** - Creating and throwing exceptions when problems are detected
-- **Custom Exceptions** - Defining domain-specific error types using class inheritance
-- **Exception Hierarchy** - Using parent exceptions to catch groups of related errors
-- **Error Recovery** - Keeping programs running after handling errors
+- **Custom Exceptions** - Domain-specific error types via class inheritance
+- **Exception Hierarchy** - Using parent exceptions to catch related errors
 
 ## Requirements
 
-- Python 3.x
-- No external libraries required
-
+- Python 3.10+
+- flake8 (linting)
+- mypy (type checking)
